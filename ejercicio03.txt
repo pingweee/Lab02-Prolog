@@ -1,0 +1,43 @@
+% --- META ---
+% La meta es un estado con 8 elementos
+meta(Estado) :- length(Estado, 8).
+
+% --- DFS ---
+% Caso base: El estado actual cumple la meta.
+dfs(Estado, _, Estado) :- 
+    meta(Estado).
+
+% Caso recursivo:
+dfs(EstadoActual, Visitados, SolucionFinal) :-
+    siguiente_estado(EstadoActual, SiguienteEstado),
+    \+ member(SiguienteEstado, Visitados),
+    dfs(SiguienteEstado, [SiguienteEstado | Visitados], SolucionFinal).
+
+% --- TRANSICIÓN: Colocar una reina ---
+siguiente_estado(EstadoActual, [NuevaFila | EstadoActual]) :-
+    member(NuevaFila, [1, 2, 3, 4, 5, 6, 7, 8]),
+    % Verificamos que no se ataquen
+    es_seguro(NuevaFila, EstadoActual).
+
+% --- REGLAS DE SEGURIDAD ---
+es_seguro(Fila, EstadoAnterior) :-
+    % 1. No debe estar en la misma fila (la columna ya es distinta por posición)
+    \+ member(Fila, EstadoAnterior),
+    % 2. No debe estar en la misma diagonal
+    no_ataca_diagonal(Fila, 1, EstadoAnterior).
+
+no_ataca_diagonal(_, _, []).
+no_ataca_diagonal(Fila, Distancia, [F | Resto]) :-
+    % Diferencia filas no puede ser igual a la distancia entre columnas
+    Fila - F =\= Distancia,
+    F - Fila =\= Distancia,
+    NuevaDistancia is Distancia + 1,
+    no_ataca_diagonal(Fila, NuevaDistancia, Resto).
+
+solucion(Solucion) :-
+    EstadoInicial = [],
+    dfs(EstadoInicial, [EstadoInicial], Solucion).
+
+% --- Querys ---
+% solucion(S): S = [4, 2, 7, 3, 6, 8, 5, 1] es decir en (1, 4), (2, 2)..., (8, 1).
+% tras eso hay una cantidad de soluciones de +90 soluciones, en el archivo informativo del problema dice 92 soluciones. 
