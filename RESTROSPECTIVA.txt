@@ -1,0 +1,29 @@
+Retrospectiva
+¿Cuál fue el tiempo total invertido en el laboratorio por cada uno de ustedes? (Horas/Hombre)
+¿Cuál es el estado actual del laboratorio? ¿Por qué?
+¿Cuál consideran fue el mayor logro? ¿Por qué?
+¿Cuál consideran que fue el mayor problema técnico? ¿Qué hicieron para resolverlo?
+¿Qué hicieron bien como equipo? ¿Qué se comprometen a hacer para mejorar los resultados?
+¿Qué referencias usaron? ¿Cuál fue la más útil? Incluyan citas con estándares adecuados.
+
+--- Respuestas ---
+1) En mi caso en el laboratorio 1 al ser mayor cantidad de ejercicios y estar "nuevo" en todo el tema de prolog e incluso de github le dedique aproximadamente unas 8 o 9 horas, aproximadamente una hora y media por cada punto
+en el laboratorio 2 si bien ya estaba familiarizado con prolog y la platadorma de prolog tambien demore unas 2 horas por cada ejercicio es decir 6 horas en total, la mayor parte de este tiempo invertido en entender como funcionaba el DFS.
+2) El estado actual del laboratorio es finalizado, por que se cumplieron los lineamientos y lo esperado por cada punto 
+3) En mi caso, el mayor logro fue haberme adaptado a este "paradigma" logico, si bien no soy experto creo que logre entender el funcionamiento detras de este tipo de programacion tan distinto al que estaba familiarizado.
+4) El mayor problema tecnico en mi caso fue tal vez aprender los zlgoritmos de busqueda y el manejo de listas, creo que fueron las partes que mas se me dificultaron y mas tiempo de estudio tuve que dedicarles.
+5) En mi caso, con mis compañeros estuvimos abiertos a escuchar las dificultades de cada uno y ver como podemos ayudarnos entre nosotros para superar esas dificultades.
+
+6) Referencias
+Herramienta de Desarrollo (SWISH):
+Cita: (Wielemaker et al., 2019)
+Referencia: Wielemaker, J., Lager, T., & Riguzzi, F. (2019). SWISH: A Cloud-based Prolog Development Environment. SWI-Prolog. https://swish.swi-prolog.org/
+
+Libro (Lecturas de clase):
+Cita: (Clocksin & Mellish, 1987)
+Referencia: Clocksin, W. F., & Mellish, C. S. (1987). El lenguaje de programación PROLOG. (Versión en español de la Colección de Libros CC). 
+Springer-Verlag / Archive.org. https://ia800708.us.archive.org/26/items/coleccion-libros-cc/El-lenguaje-de-programacion-PROLOG.pdf
+
+Asistente de IA (Gemini):
+Cita: (Google Gemini, 2026)
+Referencia: Google Gemini. (2026). Asistente de Inteligencia Artificial. [Modelo de lenguaje a gran escala]. https://gemini.google.com
