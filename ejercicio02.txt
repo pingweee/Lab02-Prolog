@@ -1,0 +1,61 @@
+power_list([
+    power(logica, 100, 10),
+    power(sigilo, 150, 30),
+    power(fuerza, 250, 50)
+]).
+
+villain_list([
+    villain(riddler, 90, [logica, sigilo]),
+    villain(bane, 240, [fuerza])
+]).
+
+batman_can_win(EnergiaMaxima) :-
+    power_list(Superpoderes),
+    villain_list(Villanos),
+    % El estado inicial contiene todos los villanos, todos los poderes y la energía máxima.
+    EstadoInicial = estado(Villanos, Superpoderes, EnergiaMaxima),
+    dfs(EstadoInicial, [EstadoInicial]). %dfs(Estado,Visitados)
+
+% Batman gana cuando la lista de villanos está vacía [].
+meta(estado([], _)).
+
+% --- DFS ---
+dfs(Estado, _, [Estado]) :- 
+    meta(Estado).
+
+dfs(EstadoActual, Visitados, [EstadoActual | CaminoRestante]) :-
+    siguiente_estado(EstadoActual, SiguienteEstado),
+    \+ member(SiguienteEstado, Visitados),
+    dfs(SiguienteEstado, [SiguienteEstado | Visitados], CaminoRestante).
+
+% --- Combate ---
+
+siguiente_estado(estado([villain(Nombre, Vida, Debilidades) | RestoVillanos], Energia), 
+                 SiguienteEstado) :-
+    power_list(Poderes),
+    member(power(NombrePoder, Dano, Costo), Poderes),
+    % Condición 1: El poder debe ser una debilidad del villano actual
+    member(NombrePoder, Debilidades),
+    % Condición 2: Batman debe tener suficiente energía
+    Energia >= Costo,
+    NuevaEnergia is Energia - Costo,
+    (
+        Dano >= Vida -> 
+        % Si daño mata al villano, lo elimina de la lista
+        SiguienteEstado = estado(RestoVillanos, NuevaEnergia)
+        ;
+        % Si no muere, queda con menos vida para el siguiente paso 
+        NuevaVida is Vida - Dano,
+        SiguienteEstado = estado([villain(Nombre, NuevaVida, Debilidades) | RestoVillanos], NuevaEnergia)
+    ).
+batman_can_win(EnergiaMaxima, Solucion) :-
+    villain_list(Villanos),
+    EstadoInicial = estado(Villanos, EnergiaMaxima),
+    dfs(EstadoInicial, [EstadoInicial], Solucion).
+
+% --- Query ---
+% batman_can_win(100, Camino) 
+% Camino = [estado([villain(riddler,90,[logica, sigilo]), villain(bane,240,[fuerza])],100), estado([villain(bane,240,[fuerza])],90), estado([],40)]
+% Camino = [estado([villain(riddler,90,[logica, sigilo]), villain(bane,240,[fuerza])],100), estado([villain(bane,240,[fuerza])],70), estado([],20)]
+% Es decir batman tiene una lista de dos villanos, primero riddler con 90 de hp y es vulnerable a logica, entonces batman gasta
+% 10 de energia y mata a riddler, despues va con bane y utiliza fuerza, matandolo y quedando bataman con 40 de energia.
