@@ -27,3 +27,6 @@ Springer-Verlag / Archive.org. https://ia800708.us.archive.org/26/items/coleccio
 Asistente de IA (Gemini):
 Cita: (Google Gemini, 2026)
 Referencia: Google Gemini. (2026). Asistente de Inteligencia Artificial. [Modelo de lenguaje a gran escala]. https://gemini.google.com
+
+Cual fue la ayuda mas util? : en mi caso la referencia y ayuda que mas utilice en este trabajo fue Gemini AI, ya que la utilice para entender la logica detras de diversos programas como el DFS, que
+en mi caso fue de las cosas mas dificiles de comprender, ademas buscando errores en mi trabajao y simplificandolo para que fuera mas legible.
